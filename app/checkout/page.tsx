@@ -36,6 +36,7 @@ export default function CheckoutPage() {
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal'>('card')
   const [isProcessing, setIsProcessing] = useState(false)
   const [loadingProduct, setLoadingProduct] = useState(true)
+  const [orderId, setOrderId] = useState<string | null>(null)
 
   // Get product from URL query param if coming from Buy Now
   useEffect(() => {
@@ -99,6 +100,56 @@ export default function CheckoutPage() {
     // Simulate payment processing
     await new Promise(resolve => setTimeout(resolve, 2000))
 
+    // Generate unique order ID
+    const generatedOrderId = `JK-${Date.now().toString().slice(-8)}-${Math.random().toString(36).substr(2, 6).toUpperCase()}`
+
+    // Prepare order data for Airtable
+    const orderData = {
+      orderId: generatedOrderId,
+      customer: shippingInfo,
+      items: state.items.map(item => ({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        size: item.size,
+        quantity: item.quantity,
+        image: item.image,
+      })),
+      totals: {
+        subtotal,
+        shipping,
+        tax,
+        total,
+      },
+      paymentMethod,
+      timestamp: new Date().toISOString(),
+    }
+
+    // Send order to Airtable (don't block on errors)
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderData),
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setOrderId(data.orderId)
+        console.log('Order saved successfully:', data.orderId)
+      } else {
+        console.error('Failed to save order, but continuing...')
+        // Still set orderId for display even if API fails
+        setOrderId(generatedOrderId)
+      }
+    } catch (error) {
+      console.error('Error saving order:', error)
+      // Still set orderId so user sees confirmation
+      setOrderId(generatedOrderId)
+    }
+
     setIsProcessing(false)
     setStep('success')
     clearCart()
@@ -151,7 +202,7 @@ export default function CheckoutPage() {
             <h1 className="text-4xl font-display font-bold mb-4">Order Confirmed!</h1>
             <p className="text-gray-600 mb-2">Thank you for your purchase.</p>
             <p className="text-gray-600 mb-8">
-              Order #JK{Date.now().toString().slice(-8)} - We&apos;ll send you a confirmation email shortly.
+              Order #{orderId || 'JK' + Date.now().toString().slice(-8)} - We&apos;ll send you a confirmation email shortly.
             </p>
             <div className="bg-white rounded-lg p-6 shadow-sm mb-8 text-left">
               <h3 className="font-bold mb-4">Order Summary</h3>

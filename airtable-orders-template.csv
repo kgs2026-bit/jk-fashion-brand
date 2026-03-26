@@ -1,0 +1,2 @@
+Order ID,Timestamp,Customer Email,First Name,Last Name,Address,City,Country,Postal Code,Phone,Items,Subtotal,Shipping,Tax,Total,Payment Method,Status
+ORD-12345678,2025-03-26T10:30:00Z,test@example.com,John,Doe,123 Main St,New York,USA,10001,+1234567890,"[{""id"":""1"",""title"":""Oversized Noir Hoodie"",""price"":128,""size"":""M"",""quantity"":1,""image"":""https://example.com/image.jpg""}]",128,0,10.24,138.24,Card,paid
