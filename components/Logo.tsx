@@ -14,11 +14,17 @@ export default function Logo({ size = 'md', showText = true }: LogoProps) {
     lg: 'text-4xl',
   }
 
+  const iconSizes = {
+    sm: 'w-8 h-8',
+    md: 'w-10 h-10',
+    lg: 'w-14 h-14',
+  }
+
   return (
     <Link href="/" className="flex items-center space-x-2 group">
       <div className="relative">
-        <div className="w-10 h-10 bg-primary-black flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500">
-          <span className="text-primary-gold font-bold text-xl">A</span>
+        <div className={`${iconSizes[size]} bg-gradient-to-br from-primary-black to-gray-800 flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-500 shadow-lg`}>
+          <span className="text-primary-gold font-bold text-lg md:text-xl lg:text-2xl tracking-wider">JK</span>
         </div>
       </div>
       {showText && (

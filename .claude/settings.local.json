@@ -9,7 +9,12 @@
       "Bash(curl -I \"https://images.unsplash.com/photo-1624378439575-d8697cd583dd?w=800&q=80\")",
       "Bash(git init:*)",
       "Bash(git config:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh --version)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)"
     ]
   }
 }
