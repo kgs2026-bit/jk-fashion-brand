@@ -52,6 +52,7 @@ export default function HomePage() {
       image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
       description: 'As an architect, Elena needed a wardrobe that reflected her professional yet urban lifestyle. She worked with our stylists to curate a complete collection of 12 pieces that could mix and match for both client meetings and weekend outings.',
       result: 'Elena now has a capsule wardrobe that saves her 2+ hours each morning while maintaining her sophisticated style. "The quality is incredible—everything fits perfectly and gets compliments everywhere I go."',
+      slug: 'wardrobe-refresh',
     },
     {
       title: 'Sustainable Fashion Journey',
@@ -60,6 +61,7 @@ export default function HomePage() {
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80',
       description: 'James wanted to align his fashion choices with his environmental values. He switched entirely to our sustainable collection, choosing pieces made from organic cotton, recycled materials, and ethical production methods.',
       result: 'In 6 months, James replaced 80% of his fast fashion items with JK Fashion sustainable pieces. "I feel good about every purchase now. The materials are premium, and knowing the ethical standards behind each piece makes the investment worth it."',
+      slug: 'sustainable-journey',
     },
     {
       title: 'From Casual to CEO Ready',
@@ -68,6 +70,7 @@ export default function HomePage() {
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80',
       description: 'David needed to upgrade his casual streetwear aesthetic to something more boardroom-appropriate without losing his urban edge. Our team created a custom collection blending minimalist tailoring with streetwear influences.',
       result: 'David successfully transitioned from hoodies to heritage blazers while maintaining his authentic style. "JK Fashion understood exactly what I needed—pieces that work for investor meetings and still feel like me. My wardrobe finally reflects both sides of my life."',
+      slug: 'casual-to-ceo',
     },
   ]
 
@@ -327,7 +330,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
-              <CaseStudyCard key={index} {...study} index={index} />
+              <CaseStudyCard key={study.slug} {...study} index={index} />
             ))}
           </div>
         </Container>

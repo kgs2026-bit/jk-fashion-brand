@@ -12,10 +12,11 @@ interface CaseStudyCardProps {
   image: string
   description: string
   result: string
+  slug: string
   index: number
 }
 
-export default function CaseStudyCard({ title, customer, role, image, description, result, index }: CaseStudyCardProps) {
+export default function CaseStudyCard({ title, customer, role, image, description, result, slug, index }: CaseStudyCardProps) {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 },
@@ -63,7 +64,7 @@ export default function CaseStudyCard({ title, customer, role, image, descriptio
         </div>
 
         <Link
-          href="/case-studies"
+          href={`/case-studies/${slug}`}
           className="flex items-center text-primary-black hover:text-primary-gold font-medium transition-colors duration-300 group"
         >
           <span>Read Full Story</span>
