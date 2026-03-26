@@ -144,6 +144,35 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* Case Studies Preview - Immediately after Hero */}
+      <section className="py-20 bg-primary-white">
+        <Container>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <p className="text-sm uppercase tracking-widest text-primary-gold mb-2">Success Stories</p>
+            <h2 className="text-4xl md:text-5xl font-display font-bold">Real Customer Transformations</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-4">
+              See how JK Fashion has helped customers elevate their style and transform their wardrobes.
+            </p>
+            <Link href="/case-studies" className="inline-flex items-center text-primary-black hover:text-primary-gold font-medium transition-colors duration-300 group mt-4">
+              <span>View All Stories</span>
+              <ArrowRight size={18} className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {caseStudies.slice(0, 3).map((study, index) => (
+              <CaseStudyCard key={study.slug} {...study} index={index} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
       {/* Brand Values */}
       <section className="py-20 bg-primary-white">
         <Container>
@@ -306,31 +335,6 @@ export default function HomePage() {
                   <p className="text-sm text-gray-500">{testimonial.role}</p>
                 </div>
               </motion.div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Case Studies */}
-      <section className="py-20 bg-gray-50">
-        <Container>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="text-center mb-16"
-          >
-            <p className="text-sm uppercase tracking-widest text-primary-gold mb-2">Real Stories</p>
-            <h2 className="text-4xl md:text-5xl font-display font-bold">Customer Case Studies</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mt-4">
-              Discover how our customers transformed their wardrobes and elevated their style with JK Fashion.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {caseStudies.map((study, index) => (
-              <CaseStudyCard key={study.slug} {...study} index={index} />
             ))}
           </div>
         </Container>
