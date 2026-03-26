@@ -75,22 +75,22 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             )}
 
             {/* Quick Action Buttons */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-black/80 backdrop-blur-sm">
               <Button
-                variant="primary"
+                variant="secondary"
                 size="sm"
                 fullWidth
                 onClick={(e) => {
                   e.preventDefault()
                   setShowSizeModal(true)
                 }}
-                className="bg-white text-black hover:bg-primary-gold hover:text-black mb-2"
+                className="mb-2"
               >
                 <ShoppingBag size={16} className="mr-2" />
                 Add to Cart
               </Button>
               <Button
-                variant="secondary"
+                variant="primary"
                 size="sm"
                 fullWidth
                 onClick={(e) => {
@@ -98,7 +98,6 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
                   // Navigate to product page with buy intent
                   window.location.href = `/product/${product.id}?buy=true`
                 }}
-                className="bg-primary-gold text-black hover:bg-primary-gold-dark"
               >
                 Buy Now
               </Button>
