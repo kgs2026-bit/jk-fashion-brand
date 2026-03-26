@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jkfashionbrand.com/sitemap.xml
+
+# Disallow admin and private routes
+Disallow: /admin
+Disallow: /api/*
+Disallow: /_next
