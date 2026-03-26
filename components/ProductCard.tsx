@@ -95,8 +95,9 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
                 fullWidth
                 onClick={(e) => {
                   e.preventDefault()
-                  // Navigate to product page with buy intent
-                  window.location.href = `/product/${product.id}?buy=true`
+                  // Navigate directly to checkout with product info and default size
+                  const defaultSize = product.sizes[0] || 'M'
+                  window.location.href = `/checkout?productId=${product.id}&productTitle=${encodeURIComponent(product.title)}&price=${product.price}&image=${encodeURIComponent(product.images[0])}&size=${defaultSize}`
                 }}
               >
                 Buy Now

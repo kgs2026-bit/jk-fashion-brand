@@ -58,6 +58,15 @@ export default function ProductPage() {
     setTimeout(() => setAddedToCart(false), 2000)
   }
 
+  const handleBuyNow = () => {
+    if (!selectedSize) {
+      alert('Please select a size')
+      return
+    }
+
+    window.location.href = `/checkout?productId=${product.id}&productTitle=${encodeURIComponent(product.title)}&price=${product.price}&image=${encodeURIComponent(product.images[0])}&size=${selectedSize}`
+  }
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -190,7 +199,7 @@ export default function ProductPage() {
               </div>
             </div>
 
-            {/* Add to Cart */}
+            {/* Action Buttons */}
             <div className="space-y-3 mb-8">
               <Button
                 size="lg"
@@ -207,6 +216,15 @@ export default function ProductPage() {
                 ) : (
                   'Add to Cart'
                 )}
+              </Button>
+              <Button
+                size="lg"
+                fullWidth
+                variant="primary"
+                onClick={handleBuyNow}
+                disabled={!product.inStock}
+              >
+                Buy Now
               </Button>
               {!product.inStock && (
                 <p className="text-sm text-red-600 text-center">Out of stock</p>
