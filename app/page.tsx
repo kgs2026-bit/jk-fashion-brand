@@ -205,11 +205,11 @@ export default function HomePage() {
       <section className="relative h-[600px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1550614000-4b9519e08d06?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1920&q=80"
             alt="Essentials Collection"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <Container>
           <motion.div
