@@ -258,7 +258,7 @@ export default function HomePage() {
               the building blocks of a minimalist wardrobe.
             </p>
             <Link href="/shop?category=All">
-              <Button size="lg" className="bg-white text-black hover:bg-primary-gold hover:text-black">
+              <Button size="lg" variant="secondary">
                 Shop Essentials
               </Button>
             </Link>

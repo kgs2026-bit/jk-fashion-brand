@@ -90,7 +90,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
                 Add to Cart
               </Button>
               <Button
-                variant="primary"
+                variant="secondary"
                 size="sm"
                 fullWidth
                 onClick={(e) => {
