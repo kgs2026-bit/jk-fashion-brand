@@ -43,7 +43,7 @@ export default function Footer() {
         <div className="py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <Logo size="lg" />
+            <Logo size="lg" className="text-white" />
             <p className="text-gray-400 mt-6 mb-8 max-w-md leading-relaxed">
               Refined streetwear for the modern minimalist. Crafting premium
               essentials that bridge the gap between luxury and urban culture.
